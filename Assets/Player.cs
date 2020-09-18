@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     public Transform groundCheckPoint;
     public LayerMask whatIsGround;
-    private bool canDoubleJump; 
+    public bool canDoubleJump; 
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +25,15 @@ public class Player : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position,.2f,whatIsGround);
 
-        //if (isGrounded)
-        //{
-           // canDoubleJump = true;
-        //}
+        if (isGrounded)
+        {
+            canDoubleJump = true;
+        }
         if (Input.GetButtonDown("Jump"))
         {
             if (isGrounded)
             {
-                canDoubleJump = true;
+                //canDoubleJump = true;
                 myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
             }
             else
