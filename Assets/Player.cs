@@ -10,12 +10,15 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     public Transform groundCheckPoint;
     public LayerMask whatIsGround;
-    public bool canDoubleJump; 
+    public bool canDoubleJump;
+    private Animator anim;
+    private SpriteRenderer mySpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -44,6 +47,16 @@ public class Player : MonoBehaviour
                     canDoubleJump = false;
                 }
             }
+        }
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetFloat("moveSpeed", Mathf.Abs(myRigidBody2D.velocity.x));
+
+        if (myRigidBody2D.velocity.x <0)
+        {
+            mySpriteRenderer.flipX=true;
+        }
+        else if(myRigidBody2D.velocity.x > 0) { 
+            mySpriteRenderer.flipX = false; 
         }
     }
 }
