@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed;
-    public Rigidbody2D myRigidBody2D;
-    public float jumpForce;
-    public bool isGrounded;
-    public Transform groundCheckPoint;
-    public LayerMask whatIsGround;
-    public bool canDoubleJump;
+    [SerializeField] float moveSpeed;
+    [SerializeField] Rigidbody2D myRigidBody2D;
+    [SerializeField] float jumpForce;
+    [SerializeField] bool isGrounded;
+    [SerializeField] Transform groundCheckPoint;
+    [SerializeField] LayerMask whatIsGround;
+    [SerializeField] bool canDoubleJump;
     private Animator anim;
     private SpriteRenderer mySpriteRenderer;
 
