@@ -7,7 +7,7 @@ public class UIcontroller : MonoBehaviour
 {
     public static UIcontroller instance;
     [SerializeField] Image heart1, heart2, heart3;
-    [SerializeField] Sprite heartFull, heartEmpty;
+    [SerializeField] Sprite heartFull, heartHalf,heartEmpty;
     public void Awake()
     {
         instance = this;
@@ -27,20 +27,38 @@ public class UIcontroller : MonoBehaviour
     {
         switch (PlayerHealthControl.instance.currentHealth)
         {
-            case 3:
+            case 6:
                 heart1.sprite = heartFull;
                 heart2.sprite = heartFull;
                 heart3.sprite = heartFull;
 
                 break;
-            case 2:
+            case 5:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartHalf;
+
+                break;
+            case 4:
                 heart1.sprite = heartFull;
                 heart2.sprite = heartFull;
                 heart3.sprite = heartEmpty;
 
                 break;
-            case 1:
+            case 3:
                 heart1.sprite = heartFull;
+                heart2.sprite = heartHalf;
+                heart3.sprite = heartEmpty;
+
+                break;
+            case 2:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+
+                break;
+            case 1:
+                heart1.sprite = heartHalf;
                 heart2.sprite = heartEmpty;
                 heart3.sprite = heartEmpty;
 

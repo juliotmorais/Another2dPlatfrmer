@@ -717,6 +717,8 @@ MonoBehaviour:
   heart3: {fileID: 319333718}
   heartFull: {fileID: 8109154662235370213, guid: d9a616f95048ea84e8fc6f7920f846b8,
     type: 3}
+  heartHalf: {fileID: 2139837793675082937, guid: d9a616f95048ea84e8fc6f7920f846b8,
+    type: 3}
   heartEmpty: {fileID: -4390673095631447188, guid: d9a616f95048ea84e8fc6f7920f846b8,
     type: 3}
 --- !u!1 &1820520931
@@ -4160,7 +4162,7 @@ PrefabInstance:
     - target: {fileID: 300030870909332330, guid: 175b242c733eb834ca4574e2a71d0ce5,
         type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5957431179941826080, guid: 175b242c733eb834ca4574e2a71d0ce5,
         type: 3}
