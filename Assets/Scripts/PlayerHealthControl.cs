@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class PlayerHealthControl : MonoBehaviour
 {
+    public static PlayerHealthControl instance;
     [SerializeField] int currentHealth;
     [SerializeField] int maxHealth;
+
+    private void Awake()
+    {
+        instance = this;
+
+    }
+
 
     // Start is called before the first frame update
     void Start()

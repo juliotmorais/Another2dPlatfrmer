@@ -20,7 +20,9 @@ public class DamagePlayer : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("touching");
+            //Debug.Log("touching");
+            //FindObjectOfType<PlayerHealthControl>().DealDamage();
+            PlayerHealthControl.instance.DealDamage();
         }
 
     }
