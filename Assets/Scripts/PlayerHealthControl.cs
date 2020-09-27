@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealthControl : MonoBehaviour
 {
     public static PlayerHealthControl instance;
-    [SerializeField] int currentHealth;
+    public int currentHealth;
     [SerializeField] int maxHealth;
 
     private void Awake()
@@ -34,6 +34,7 @@ public class PlayerHealthControl : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        UIcontroller.instance.UpdateHealthDisplay();
     }
 
 }
