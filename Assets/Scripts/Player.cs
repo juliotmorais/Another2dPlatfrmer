@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Animator anim;
     private SpriteRenderer mySpriteRenderer;
 
+
     // Start is called before the first frame update
     void Start()
     {

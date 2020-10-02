@@ -178,7 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 6
+  invincibleLength: 1
 --- !u!1 &5957431180384653695
 GameObject:
   m_ObjectHideFlags: 0
