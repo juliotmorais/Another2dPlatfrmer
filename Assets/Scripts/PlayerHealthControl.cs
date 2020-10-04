@@ -55,7 +55,10 @@ public class PlayerHealthControl : MonoBehaviour
 
                 //cause player to fade out when damaged
                 mySpriteRenderer.color = new Color(mySpriteRenderer.color.r, mySpriteRenderer.color.g, mySpriteRenderer.color.b, .5f);
+
+                Player.instance.KnockBack();
             }
+
             UIcontroller.instance.UpdateHealthDisplay();
         }
 

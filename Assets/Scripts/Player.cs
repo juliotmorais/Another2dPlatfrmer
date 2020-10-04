@@ -16,6 +16,12 @@ public class Player : MonoBehaviour
     public float knockBackLength;
     public float knockBackForce;
     private float knockBackCounter;
+    public static Player instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,43 +33,67 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myRigidBody2D.velocity = new Vector2(moveSpeed*Input.GetAxis("Horizontal"), myRigidBody2D.velocity.y);
-
-        isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position,.2f,whatIsGround);
-
-        if (isGrounded)
+        if (knockBackCounter <= 0)
         {
-            canDoubleJump = true;
-        }
-        if (Input.GetButtonDown("Jump"))
-        {
+            //movement
+            myRigidBody2D.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), myRigidBody2D.velocity.y);
+
+            //grounded and jumping
+            isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
             if (isGrounded)
             {
-                //canDoubleJump = true;
-                myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
+                canDoubleJump = true;
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (isGrounded)
+                {
+                    //canDoubleJump = true;
+                    myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
+                }
+                else
+                {
+                    if (canDoubleJump)
+                    {
+                        myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
+                        canDoubleJump = false;
+                    }
+                }
+            }
+
+            //flipping sprite around
+            if (myRigidBody2D.velocity.x < 0)
+            {
+                mySpriteRenderer.flipX = true;
+            }
+            else if (myRigidBody2D.velocity.x > 0)
+            {
+                mySpriteRenderer.flipX = false;
+            }
+        }
+        else
+        {
+            knockBackCounter -= Time.deltaTime;
+            if (!mySpriteRenderer.flipX)
+            {
+                myRigidBody2D.velocity = new Vector2(-knockBackForce,myRigidBody2D.velocity.y);
             }
             else
             {
-                if (canDoubleJump)
-                {
-                    myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
-                    canDoubleJump = false;
-                }
+                myRigidBody2D.velocity = new Vector2(knockBackForce, myRigidBody2D.velocity.y);
             }
         }
+
+
+       
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("moveSpeed", Mathf.Abs(myRigidBody2D.velocity.x));
 
-        if (myRigidBody2D.velocity.x <0)
-        {
-            mySpriteRenderer.flipX=true;
-        }
-        else if(myRigidBody2D.velocity.x > 0) { 
-            mySpriteRenderer.flipX = false; 
-        }
+        
     }
     public void KnockBack()
     {
-        
+        knockBackCounter = knockBackLength;
+        myRigidBody2D.velocity = new Vector2(0f,knockBackForce);
     }
 }

@@ -4466,6 +4466,11 @@ PrefabInstance:
       propertyPath: KnockBackForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5957431179941826081, guid: 175b242c733eb834ca4574e2a71d0ce5,
+        type: 3}
+      propertyPath: knockBackForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5957431179941826092, guid: 175b242c733eb834ca4574e2a71d0ce5,
         type: 3}
       propertyPath: m_Name
