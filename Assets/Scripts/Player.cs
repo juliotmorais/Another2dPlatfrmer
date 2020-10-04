@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] bool canDoubleJump;
     private Animator anim;
     private SpriteRenderer mySpriteRenderer;
-
+    public float knockBackLength;
+    public float knockBackForce;
+    private float knockBackCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -59,5 +61,9 @@ public class Player : MonoBehaviour
         else if(myRigidBody2D.velocity.x > 0) { 
             mySpriteRenderer.flipX = false; 
         }
+    }
+    public void KnockBack()
+    {
+        
     }
 }
