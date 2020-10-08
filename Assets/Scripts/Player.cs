@@ -95,5 +95,7 @@ public class Player : MonoBehaviour
     {
         knockBackCounter = knockBackLength;
         myRigidBody2D.velocity = new Vector2(0f,knockBackForce);
+
+        anim.SetTrigger("isHurt");
     }
 }
